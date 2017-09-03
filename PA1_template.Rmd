@@ -24,7 +24,6 @@ Some simple preprocessing.
 
 ```{r}
 activity$date <- as.Date(activity$date)
-activity$interval <- as.factor(activity$interval)
 ```
 
 A simple description of data.
@@ -135,5 +134,5 @@ Plot about 5-minute interval and average steps across all weekday days and weeke
 ```{r}
 pattern_wk <- aggregate(activity_fixed$steps, list(interval = activity_fixed$interval, weekends = activity_fixed$weekends), mean)
 library(lattice)
-xyplot(x ~ as.integer(as.character(interval)) | weekends, data = pattern_wk, type = "l", layout = c(1, 2), xlab = "Interval", ylab = "Average Step Number", main = "Average Step Number of Interval for Weekdays and Weekends")
+xyplot(x ~ interval | weekends, data = pattern_wk, type = "l", layout = c(1, 2), xlab = "Interval", ylab = "Average Step Number", main = "Average Step Number of Interval for Weekdays and Weekends")
 ```
